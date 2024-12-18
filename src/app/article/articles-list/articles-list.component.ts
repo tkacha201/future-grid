@@ -4,10 +4,11 @@ import { Article } from '../../types/article';
 import { LoaderComponent } from '../../animations/loader/loader.component';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { SlicePipe } from '../../slice.pipe';
 
 @Component({
   selector: 'app-articles-list',
-  imports: [LoaderComponent, RouterLink, DatePipe],
+  imports: [LoaderComponent, RouterLink, DatePipe, SlicePipe],
   standalone: true,
   templateUrl: './articles-list.component.html',
   styleUrl: './articles-list.component.css',

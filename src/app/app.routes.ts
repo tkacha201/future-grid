@@ -8,6 +8,7 @@ import { CurrentArticleComponent } from './article/current-article/current-artic
 import { ProfileComponent } from './user/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './error/error.component';
+import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,13 +29,18 @@ export const routes: Routes = [
     ],
   },
   {
+    //lazy loading
     path: 'add-article',
-    component: AddArticleComponent,
+    loadComponent: () =>
+      import('./article/add-article/add-article.component').then(
+        (c) => c.AddArticleComponent
+      ),
     canActivate: [AuthGuard],
   },
 
   { path: 'profile', component: ProfileComponent },
 
+  { path: 'error', component: ErrorMsgComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/404' },
 ];

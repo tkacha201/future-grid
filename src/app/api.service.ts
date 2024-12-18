@@ -30,4 +30,25 @@ export class ApiService {
     const payload = { articleName, postText };
     return this.http.post<Article>(`/api/articles`, payload);
   }
+  //CRUD
+
+  // update -> http.put
+
+  updateArticle(articleId: string, articleName: string, postText: string) {
+    const payload = { articleName, postText };
+    return this.http.put<Article>(`/api/article/${articleId}`, payload);
+  }
+
+  updatePost(articleId: string, postId: string) {
+    const payload = {};
+    return this.http.put<Article>(
+      `/api/articles/${articleId}/posts/${postId}`,
+      payload
+    );
+  }
+
+  //delete -> htto.delete article ID
+  deletePost(articleId: string, postId: string) {
+    return this.http.delete(`/api/themes/${articleId}/post/${postId}`);
+  }
 }
