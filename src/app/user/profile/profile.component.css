@@ -1,0 +1,92 @@
+.profile-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--electric-blue);
+  padding: 3px;
+  background: var(--graphite);
+}
+
+.profile-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--off-white);
+}
+
+.profile-info p {
+  color: var(--soft-blue);
+}
+
+.profile-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.info-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.info-label {
+  min-width: 120px;
+  color: var(--soft-blue);
+}
+
+.info-value {
+  color: var(--off-white);
+  flex: 1;
+}
+
+.edit-mode .info-value {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-mode input {
+  flex: 1;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.edit-button {
+  background: var(--electric-blue);
+}
+
+.cancel-button {
+  background: transparent;
+  border: 1px solid var(--soft-blue);
+  color: var(--soft-blue);
+}
+
+.save-button {
+  background: var(--cyber-green);
+}

@@ -1,1 +1,76 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <img src="./profile.jpg" alt="Profile" class="profile-avatar" />
+      <div class="profile-info">
+        <h2>Profile Settings</h2>
+        <p>Manage your FutureGrid account</p>
+      </div>
+    </div>
+
+    <!-- READ MODE -->
+    <div class="profile-content">
+      <div class="info-group">
+        <span class="info-label">Username</span>
+        <span class="info-value">JohnDoe123</span>
+      </div>
+      <div class="info-group">
+        <span class="info-label">Email</span>
+        <!-- fix this later  -->
+        <span class="info-value">{{ "johndoe@example.com" }}</span>
+      </div>
+      <div class="info-group">
+        <span class="info-label">Phone</span>
+        <span class="info-value">+1234567890</span>
+      </div>
+      <div class="action-buttons">
+        <button class="edit-button">
+          <i class="fas fa-edit"></i> Edit Profile
+        </button>
+      </div>
+    </div>
+
+    <!-- EDIT MODE -->
+    <form class="profile-content edit-mode">
+      <div class="info-group">
+        <span class="info-label">Username</span>
+        <div class="info-value">
+          <input type="text" placeholder="Enter username" value="JohnDoe123" />
+        </div>
+      </div>
+      <p class="error">Username must be at least 5 characters</p>
+
+      <div class="info-group">
+        <span class="info-label">Email</span>
+        <div class="info-value">
+          <input
+            type="email"
+            placeholder="Enter email"
+            value="johndoe@example.com"
+          />
+        </div>
+      </div>
+      <p class="error">Please enter a valid email</p>
+
+      <div class="info-group">
+        <span class="info-label">Phone</span>
+        <div class="info-value">
+          <input
+            type="tel"
+            placeholder="Enter phone number"
+            value="+1234567890"
+          />
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="cancel-button">
+          <i class="fas fa-times"></i> Cancel
+        </button>
+        <button type="submit" class="save-button">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
