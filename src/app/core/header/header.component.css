@@ -1,0 +1,132 @@
+.futuristic-header {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(31, 81, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.future {
+  color: var(--electric-blue);
+}
+
+.grid {
+  color: var(--cyber-green);
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--soft-blue);
+  margin-top: 0.2rem;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  color: var(--off-white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background: rgba(31, 81, 255, 0.1);
+  color: var(--cyber-green);
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-btn,
+.register-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  color: var(--cyber-green);
+  border: 1px solid var(--cyber-green);
+}
+
+.login-btn:hover {
+  background: rgba(0, 255, 153, 0.1);
+}
+
+.register-btn {
+  background: var(--electric-blue);
+  color: var(--off-white);
+}
+
+.register-btn:hover {
+  background: var(--cyber-green);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--off-white);
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid var(--soft-blue);
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--soft-blue);
+  text-transform: none;
+}
+
+.logout-btn:hover {
+  border-color: #ff4444;
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  box-shadow: 0 0 20px rgba(255, 2, 2, 0.4);
+}
