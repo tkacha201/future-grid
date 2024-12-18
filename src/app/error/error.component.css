@@ -1,0 +1,61 @@
+.error-container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 81, 255, 0.1) 0%,
+    rgba(0, 255, 153, 0.1) 100%
+  );
+}
+
+.error-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-code {
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  background: linear-gradient(135deg, var(--electric-blue), var(--cyber-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  color: var(--off-white);
+  margin: 1.5rem 0;
+}
+
+.error-description {
+  color: var(--soft-blue);
+  margin-bottom: 2rem;
+}
+
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--electric-blue);
+  color: var(--off-white);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.home-link:hover {
+  background: var(--cyber-green);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 153, 0.3);
+}
