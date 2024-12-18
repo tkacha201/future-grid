@@ -1,1 +1,53 @@
-<p>add-article works!</p>
+<div class="editor-container">
+  <div class="editor-card">
+    <div class="editor-header">
+      <h2>Create New Article</h2>
+      <p>Share your tech insights with the FutureGrid community</p>
+    </div>
+
+    <form class="editor-form">
+      <div class="form-group">
+        <label for="articleName">
+          <i class="fas fa-heading"></i>
+          Article Title <span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          name="articleName"
+          id="articleName"
+          placeholder="Enter a compelling title..."
+        />
+        <p class="error">
+          <i class="fas fa-exclamation-circle"></i>
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="postText">
+          <i class="fas fa-pen-fancy"></i>
+          Article Content <span class="required">*</span>
+        </label>
+        <textarea
+          name="postText"
+          id="postText"
+          rows="12"
+          placeholder="Write your article content here..."
+        ></textarea>
+        <p class="error">
+          <i class="fas fa-exclamation-circle"></i>
+        </p>
+      </div>
+
+      <div class="editor-actions">
+        <button type="button" class="cancel-button">
+          <i class="fas fa-times"></i>
+          Cancel
+        </button>
+        <button type="submit" class="publish-button">
+          <i class="fas fa-paper-plane"></i>
+          Publish Article
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

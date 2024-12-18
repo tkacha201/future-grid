@@ -1,0 +1,78 @@
+.editor-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.editor-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-header h2 {
+  font-size: 2rem;
+  color: var(--off-white);
+  margin-bottom: 0.5rem;
+}
+
+.editor-header p {
+  color: var(--soft-blue);
+}
+
+.editor-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group label {
+  color: var(--off-white);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group label i {
+  color: var(--cyber-green);
+}
+
+.form-group textarea {
+  min-height: 300px;
+  resize: vertical;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-button {
+  background: transparent;
+  border: 1px solid var(--soft-blue);
+  color: var(--soft-blue);
+}
+
+.publish-button {
+  background: var(--electric-blue);
+  flex: 1;
+}
+
+.publish-button:hover {
+  background: var(--cyber-green);
+}

@@ -1,1 +1,65 @@
-<p>current-article works!</p>
+<div class="article-container">
+  <article>
+    <header class="article-header">
+      <h1 class="article-title">Article Title</h1>
+      <div class="article-meta">
+        <div class="meta-item">
+          <i class="fas fa-user"></i>
+          <span>Author Name</span>
+        </div>
+        <div class="meta-item">
+          <i class="fas fa-calendar"></i>
+          <time>Publish Date</time>
+        </div>
+        <div class="meta-item">
+          <i class="fas fa-users"></i>
+          <span>0 Subscribers</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-content">
+      <div class="comment">
+        <div class="comment-header">
+          <div class="meta-item">
+            <i class="fas fa-user"></i>
+            <span>Comment Author</span>
+          </div>
+          <time>Comment Date</time>
+        </div>
+        <div class="comment-content">
+          <p>Comment text</p>
+        </div>
+        <div class="article-actions">
+          <div class="action-buttons">
+            <button class="action-button">
+              <i class="fas fa-heart"></i>
+              0 Likes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <div class="comments-header">
+        <h3>Add Your Thoughts</h3>
+      </div>
+      <div class="comment-form">
+        <form>
+          <div class="comment-input">
+            <textarea
+              name="postText"
+              placeholder="Share your insights..."
+              rows="4"
+            ></textarea>
+          </div>
+          <button type="submit" class="action-button">
+            <i class="fas fa-paper-plane"></i>
+            Post Comment
+          </button>
+        </form>
+      </div>
+    </div>
+  </article>
+</div>
