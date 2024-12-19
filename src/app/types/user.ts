@@ -15,13 +15,13 @@ export interface UserForAuth {
   username: string;
   firstName: string;
   email: string;
-  phoneNumber: string;
+  tel?: string;
   password: string;
   id: string;
 }
 
 export interface ProfileDetails {
-  userName: string;
+  username: string;
   email: string;
   tel: string;
 }

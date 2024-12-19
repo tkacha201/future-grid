@@ -11,8 +11,8 @@
     @if(!isEditMode) {
     <div class="profile-content">
       <div class="info-group">
-        <span class="info-label">Username</span>
-        <span class="info-value">{{ profileDetails.userName }}</span>
+        <span class="info-label">username</span>
+        <span class="info-value">{{ profileDetails.username }}</span>
       </div>
       <div class="info-group">
         <span class="info-label">Email</span>
@@ -35,23 +35,23 @@
       class="profile-content edit-mode"
     >
       <div class="info-group">
-        <span class="info-label">Username</span>
+        <span class="info-label">username</span>
         <div class="info-value">
           <input
             type="text"
-            name="userName"
-            [ngModel]="profileDetails.userName"
-            #userName="ngModel"
+            name="username"
+            [ngModel]="profileDetails.username"
+            #username="ngModel"
             required
             minlength="5"
-            [class.input-error]="userName.touched && userName.errors"
+            [class.input-error]="username.touched && username.errors"
           />
         </div>
       </div>
-      @if(userName.touched) { @if(userName.errors?.['required']) {
-      <p class="error">Username is required</p>
-      } @if(userName.errors?.['minlength']) {
-      <p class="error">Username must be at least 5 characters</p>
+      @if(username.touched) { @if(username.errors?.['required']) {
+      <p class="error">username is required</p>
+      } @if(username.errors?.['minlength']) {
+      <p class="error">username must be at least 5 characters</p>
       } }
 
       <div class="info-group">

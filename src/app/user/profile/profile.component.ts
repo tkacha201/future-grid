@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { DOMAINS } from '../../constants';
 import { ProfileDetails } from '../../types/user';
 import { EmailDirective } from '../../directives/email.directive';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,15 +13,22 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   isEditMode: boolean = false;
   domains = DOMAINS;
 
   profileDetails: ProfileDetails = {
-    userName: 'JohnDoe',
-    email: 'johndoe@gmail.com',
-    tel: '123-123-123',
+    username: '',
+    email: '',
+    tel: '',
   };
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    const { username, email, tel } = this.userService.user!;
+    this.profileDetails = { username, email, tel: tel! }; // This binds to the template automatically.
+  }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
@@ -31,7 +39,10 @@ export class ProfileComponent {
       return;
     }
     this.profileDetails = form.value;
-    this.toggleEditMode();
+    const { username, email, tel } = this.profileDetails;
+    this.userService.updateProfile(username, email, tel).subscribe(() => {
+      this.toggleEditMode();
+    });
   }
 
   onCancel(event: Event) {
