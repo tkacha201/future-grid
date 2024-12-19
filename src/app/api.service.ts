@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from './types/post';
 import { Article } from './types/article';
-import { environment } from '../dev.environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +10,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getPosts(limit?: number) {
-    const { apiUrl } = environment;
-
-    let url = `${apiUrl}/posts`;
+    let url = `/api/posts`;
     if (limit) {
       url += `?limit=${limit}`;
     }
@@ -22,19 +19,15 @@ export class ApiService {
   }
 
   getArticles() {
-    const { apiUrl } = environment;
-    return this.http.get<Article[]>(`${apiUrl}/articles`);
+    return this.http.get<Article[]>(`/api/articles`);
   }
 
   getSingleArticle(id: string) {
-    const { apiUrl } = environment;
-
-    return this.http.get<Article>(`${apiUrl}/articles/${id}`);
+    return this.http.get<Article>(`/api/articles/${id}`);
   }
 
   createArticle(articleName: string, postText: string) {
-    const { apiUrl } = environment;
     const payload = { articleName, postText };
-    return this.http.post<Article>(`${apiUrl}/articles`, payload);
+    return this.http.post<Article>(`/api/articles`, payload);
   }
 }

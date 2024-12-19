@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './add-article.component.css',
 })
 export class AddArticleComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   addArticle(form: NgForm) {
     console.log(form);
@@ -18,11 +19,9 @@ export class AddArticleComponent {
       return;
     }
 
-    console.log(form.value);
-
-    // event.preventDefault();
-    // this.apiService.createArticle(articlesName, postText).subscribe((data) => {
-    //   console.log(data);
-    // });
+    const { articleName, postText } = form.value;
+    this.apiService.createArticle(articleName, postText).subscribe(() => {
+      this.router.navigate(['/articles']);
+    });
   }
 }

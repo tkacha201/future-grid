@@ -22,16 +22,19 @@
           required
           minlength="5"
         />
-        @if(username.touched) { @if(username.errors?.['required']) {
-        <p class="error">
+        <p
+          *ngIf="username.touched && username.errors?.['required']"
+          class="error"
+        >
           <i class="fas fa-exclamation-circle"></i> Username is required
         </p>
-        } @if(username.errors?.['minlength']) {
-        <p class="error">
+        <p
+          *ngIf="username.touched && username.errors?.['minlength']"
+          class="error"
+        >
           <i class="fas fa-exclamation-circle"></i> Username must be at least 5
           characters
         </p>
-        } }
       </div>
 
       <div class="form-group">
@@ -40,7 +43,7 @@
           Email Address
         </label>
         <input
-          [class.input-error]="email.touched && (email.errors?.['required'] || email.errors?.['emailValidator'])"
+          [class.input-error]="email.touched && email.errors"
           type="email"
           id="email"
           name="email"
@@ -50,16 +53,16 @@
           required
           [appEmail]="domains"
         />
-        @if(email.touched) { @if(email.errors?.['required']) {
-        <p class="error">
+        <p *ngIf="email.touched && email.errors?.['required']" class="error">
           <i class="fas fa-exclamation-circle"></i> Email is required
         </p>
-        } @if(email.errors?.['emailValidator']) {
-        <p class="error">
+        <p
+          *ngIf="email.touched && email.errors?.['emailValidator']"
+          class="error"
+        >
           <i class="fas fa-exclamation-circle"></i> Please enter a valid email
           address
         </p>
-        } }
       </div>
 
       <div class="form-group">
@@ -68,7 +71,7 @@
           Phone Number
         </label>
         <div class="tel-group">
-          <select name="select-tel" id="select-tel">
+          <select name="select-tel" id="select-tel" ngModel>
             <option value="00359">+359</option>
           </select>
           <input
@@ -81,14 +84,14 @@
         </div>
       </div>
 
-      <div class="password-group">
+      <div ngModelGroup="passGroup" #passGroup="ngModelGroup">
         <div class="form-group">
           <label for="password">
             <i class="fas fa-lock"></i>
             Password
           </label>
           <input
-            [class.input-error]="password.touched && (password.errors?.['required'] || password.errors?.['minlength'])"
+            [class.input-error]="password.touched && password.errors"
             type="password"
             id="password"
             name="password"
@@ -98,16 +101,19 @@
             required
             minlength="5"
           />
-          @if(password.touched) { @if(password.errors?.['required']) {
-          <p class="error">
+          <p
+            *ngIf="password.touched && password.errors?.['required']"
+            class="error"
+          >
             <i class="fas fa-exclamation-circle"></i> Password is required
           </p>
-          } @if(password.errors?.['minlength']) {
-          <p class="error">
+          <p
+            *ngIf="password.touched && password.errors?.['minlength']"
+            class="error"
+          >
             <i class="fas fa-exclamation-circle"></i> Password must be at least
             5 characters
           </p>
-          } }
         </div>
 
         <div class="form-group">
@@ -127,17 +133,18 @@
             #rePassword="ngModel"
             required
           />
-          @if(rePassword.touched && rePassword.value !== password.value) {
-          <p class="error">
+          <p
+            *ngIf="rePassword.touched && rePassword.value !== password.value"
+            class="error"
+          >
             <i class="fas fa-exclamation-circle"></i> Passwords must match
           </p>
-          }
         </div>
       </div>
 
       <button
         type="submit"
-        [disabled]="form.invalid || password.value !== rePassword.value"
+        [disabled]="form.invalid || passGroup.invalid"
         [style]="{
           backgroundColor: form.invalid
             ? 'var(--soft-blue)'
