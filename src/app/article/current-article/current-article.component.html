@@ -1,46 +1,52 @@
 <div class="article-container">
+  @if(!isLoggedIn) {
+  <app-home />
+  } @else {
   <article>
     <header class="article-header">
-      <h1 class="article-title">Article Title</h1>
+      <h1 class="article-title">{{ article.articleName }}</h1>
       <div class="article-meta">
         <div class="meta-item">
           <i class="fas fa-user"></i>
-          <span>Author Name</span>
+          <span>{{ article.userId.username }}</span>
         </div>
         <div class="meta-item">
           <i class="fas fa-calendar"></i>
-          <time>Publish Date</time>
+          <time>{{ article.created_at | date : "mediumDate" }}</time>
         </div>
         <div class="meta-item">
           <i class="fas fa-users"></i>
-          <span>0 Subscribers</span>
+          <span>{{ article.subscribers.length || 0 }} subscribers</span>
         </div>
       </div>
     </header>
 
     <div class="article-content">
+      @for (post of article.posts; track $index) {
       <div class="comment">
         <div class="comment-header">
           <div class="meta-item">
             <i class="fas fa-user"></i>
-            <span>Comment Author</span>
+            <span>{{ post.userId.username }}</span>
           </div>
-          <time>Comment Date</time>
+          <time>{{ post.created_at | date : "medium" }}</time>
         </div>
         <div class="comment-content">
-          <p>Comment text</p>
+          <p>{{ post.text }}</p>
         </div>
         <div class="article-actions">
           <div class="action-buttons">
             <button class="action-button">
               <i class="fas fa-heart"></i>
-              0 Likes
+              {{ post?.likes?.length || 0 }} Likes
             </button>
           </div>
         </div>
       </div>
+      }
     </div>
 
+    @if (isLoggedIn) {
     <div class="comments-section">
       <div class="comments-header">
         <h3>Add Your Thoughts</h3>
@@ -61,5 +67,7 @@
         </form>
       </div>
     </div>
+    }
   </article>
+  }
 </div>

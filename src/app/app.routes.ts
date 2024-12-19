@@ -7,6 +7,7 @@ import { AddArticleComponent } from './article/add-article/add-article.component
 import { MainComponent } from './main/main.component';
 import { CurrentArticleComponent } from './article/current-article/current-article.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,12 +23,14 @@ export const routes: Routes = [
       {
         path: ':articleId',
         component: CurrentArticleComponent,
+        // canActivate: [AuthGuard],
       },
     ],
   },
   {
     path: 'add-article',
     component: AddArticleComponent,
+    canActivate: [AuthGuard],
   },
 
   { path: 'profile', component: ProfileComponent },

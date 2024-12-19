@@ -5,21 +5,28 @@
       <p>Access your FutureGrid account</p>
     </div>
 
-    <form class="auth-form">
+    <form class="auth-form" #form="ngForm" (ngSubmit)="login(form)">
       <div class="form-group">
         <label for="email">
           <i class="fas fa-envelope"></i>
           Email Address
         </label>
         <input
+          [class.input-error]="(inputEmail?.touched && inputEmail?.errors?.['required']) || (inputEmail?.touched && inputEmail?.errors?.['emailValidator'])"
           type="email"
           name="email"
           id="email"
           placeholder="your.email@example.com"
+          ngModel
+          #inputEmail="ngModel"
           required
+          [appEmail]="domains"
         />
-
+        @if (inputEmail?.touched) { @if (inputEmail?.errors?.['required']) {
+        <p class="error">Email is required</p>
+        } @if (inputEmail?.errors?.['emailValidator']) {
         <p class="error">Please enter a valid email address</p>
+        } }
       </div>
 
       <div class="form-group">
@@ -28,18 +35,32 @@
           Password
         </label>
         <input
+          [class.input-error]="(inputPassword?.touched && inputPassword?.errors?.['required']) || (inputPassword?.touched && inputPassword?.errors?.['minlength'])"
           type="password"
           name="password"
           id="password"
           placeholder="Enter your password"
+          ngModel
+          #inputPassword="ngModel"
           minlength="5"
           required
         />
-
+        @if(inputPassword?.touched) { @if(inputPassword?.errors?.['required']) {
+        <p class="error">Password is required</p>
+        } @if(inputPassword?.errors?.['minlength']) {
         <p class="error">Password must be at least 5 characters</p>
+        } }
       </div>
 
-      <button type="submit" style="background-color: #00aaff">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        [style]="{
+          backgroundColor: form.invalid
+            ? 'var(--soft-blue)'
+            : 'var(--electric-blue)'
+        }"
+      >
         <i class="fas fa-sign-in-alt"></i>
         Sign In
       </button>
@@ -47,7 +68,7 @@
       <div class="auth-footer">
         <p>
           New to FutureGrid?
-          <a href="/register">Create an account</a>
+          <a routerLink="/register">Create an account</a>
         </p>
       </div>
     </form>

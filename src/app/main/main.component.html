@@ -1,49 +1,13 @@
 <div class="main-container">
+  @if(isLoggedIn) {
   <div class="content-area">
-    <!-- Articles List Placeholder -->
-    <section class="articles-list">
-      <article class="article-item">
-        <h2 class="article-title">Sample Article Title</h2>
-        <p class="article-excerpt">
-          This is a short description or summary of the article...
-        </p>
-        <a href="/article/1" class="read-more">Read More</a>
-      </article>
-      <article class="article-item">
-        <h2 class="article-title">Another Article Title</h2>
-        <p class="article-excerpt">
-          A brief summary of another article goes here...
-        </p>
-        <a href="/article/2" class="read-more">Read More</a>
-      </article>
-    </section>
+    <app-articles-list />
   </div>
 
   <aside class="sidebar">
-    <!-- Posts List Placeholder -->
-    <section class="posts-list">
-      <div class="post-item">
-        <h3 class="post-title">Recent Post Title</h3>
-        <p class="post-excerpt">Snippet of a recent post...</p>
-        <a href="/post/1" class="read-more">Read More</a>
-      </div>
-      <div class="post-item">
-        <h3 class="post-title">Another Recent Post</h3>
-        <p class="post-excerpt">Another quick snippet from a post...</p>
-        <a href="/post/2" class="read-more">Read More</a>
-      </div>
-    </section>
+    <app-posts-list />
   </aside>
-</div>
-
-<!-- Placeholder for when the user is not logged in -->
-<div class="main-container">
-  <section class="home">
-    <h1>Welcome to FutureGrid</h1>
-    <p>Please log in or register to access the content.</p>
-    <div class="cta-buttons">
-      <a href="/login" class="cta-button primary">Log In</a>
-      <a href="/register" class="cta-button secondary">Register</a>
-    </div>
-  </section>
+  } @else {
+  <app-home />
+  }
 </div>

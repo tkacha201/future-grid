@@ -9,16 +9,18 @@
         destination for cutting-edge tech insights, innovation news, and
         in-depth analysis of tomorrow's breakthroughs.
       </p>
+      @if(!isLoggedIn){
       <div class="cta-buttons">
-        <a href="/login" class="cta-button primary">
+        <a routerLink="/login" class="cta-button primary">
           <i class="fas fa-sign-in-alt"></i>
           Start Writing
         </a>
-        <a href="/register" class="cta-button secondary">
+        <a routerLink="/register" class="cta-button secondary">
           <i class="fas fa-user-plus"></i>
           Join Community
         </a>
       </div>
+      }
     </div>
   </div>
 </div>

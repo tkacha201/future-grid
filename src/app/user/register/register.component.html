@@ -5,91 +5,154 @@
       <p>Create your account to start sharing tech insights</p>
     </div>
 
-    <form class="register-form">
+    <form class="register-form" #form="ngForm" (ngSubmit)="register(form)">
       <div class="form-group">
-        <label for="username"><i class="fas fa-user"></i> Username</label>
+        <label for="username">
+          <i class="fas fa-user"></i>
+          Username
+        </label>
         <input
+          [class.input-error]="username.touched && username.errors"
           type="text"
           id="username"
+          name="username"
           placeholder="Choose a username"
-          class="input-error"
+          ngModel
+          #username="ngModel"
+          required
+          minlength="5"
         />
+        @if(username.touched) { @if(username.errors?.['required']) {
         <p class="error">
           <i class="fas fa-exclamation-circle"></i> Username is required
         </p>
+        } @if(username.errors?.['minlength']) {
         <p class="error">
           <i class="fas fa-exclamation-circle"></i> Username must be at least 5
           characters
         </p>
+        } }
       </div>
 
       <div class="form-group">
-        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+        <label for="email">
+          <i class="fas fa-envelope"></i>
+          Email Address
+        </label>
         <input
+          [class.input-error]="email.touched && (email.errors?.['required'] || email.errors?.['emailValidator'])"
           type="email"
           id="email"
+          name="email"
           placeholder="your.email@example.com"
-          class="input-error"
+          ngModel
+          #email="ngModel"
+          required
+          [appEmail]="domains"
         />
+        @if(email.touched) { @if(email.errors?.['required']) {
         <p class="error">
           <i class="fas fa-exclamation-circle"></i> Email is required
         </p>
+        } @if(email.errors?.['emailValidator']) {
         <p class="error">
           <i class="fas fa-exclamation-circle"></i> Please enter a valid email
           address
         </p>
+        } }
       </div>
 
       <div class="form-group">
-        <label for="tel"><i class="fas fa-phone"></i> Phone Number</label>
+        <label for="tel">
+          <i class="fas fa-phone"></i>
+          Phone Number
+        </label>
         <div class="tel-group">
           <select name="select-tel" id="select-tel">
             <option value="00359">+359</option>
           </select>
-          <input type="text" id="tel" placeholder="Enter phone number" />
+          <input
+            type="text"
+            id="tel"
+            name="tel"
+            placeholder="Enter phone number"
+            ngModel
+          />
         </div>
       </div>
 
       <div class="password-group">
         <div class="form-group">
-          <label for="password"><i class="fas fa-lock"></i> Password</label>
+          <label for="password">
+            <i class="fas fa-lock"></i>
+            Password
+          </label>
           <input
+            [class.input-error]="password.touched && (password.errors?.['required'] || password.errors?.['minlength'])"
             type="password"
             id="password"
+            name="password"
             placeholder="Create a password"
-            class="input-error"
+            ngModel
+            #password="ngModel"
+            required
+            minlength="5"
           />
+          @if(password.touched) { @if(password.errors?.['required']) {
           <p class="error">
             <i class="fas fa-exclamation-circle"></i> Password is required
           </p>
+          } @if(password.errors?.['minlength']) {
           <p class="error">
             <i class="fas fa-exclamation-circle"></i> Password must be at least
             5 characters
           </p>
+          } }
         </div>
 
         <div class="form-group">
-          <label for="rePassword"
-            ><i class="fas fa-lock"></i> Confirm Password</label
-          >
+          <label for="rePassword">
+            <i class="fas fa-lock"></i>
+            Confirm Password
+          </label>
           <input
+            [class.input-error]="
+              rePassword.touched && rePassword.value !== password.value
+            "
             type="password"
             id="rePassword"
+            name="rePassword"
             placeholder="Confirm your password"
-            class="input-error"
+            ngModel
+            #rePassword="ngModel"
+            required
           />
+          @if(rePassword.touched && rePassword.value !== password.value) {
           <p class="error">
             <i class="fas fa-exclamation-circle"></i> Passwords must match
           </p>
+          }
         </div>
       </div>
 
-      <button type="submit">
-        <i class="fas fa-user-plus"></i> Create Account
+      <button
+        type="submit"
+        [disabled]="form.invalid || password.value !== rePassword.value"
+        [style]="{
+          backgroundColor: form.invalid
+            ? 'var(--soft-blue)'
+            : 'var(--electric-blue)'
+        }"
+      >
+        <i class="fas fa-user-plus"></i>
+        Create Account
       </button>
 
       <div class="auth-footer">
-        <p>Already have an account? <a href="/login">Sign In</a></p>
+        <p>
+          Already have an account?
+          <a routerLink="/login">Sign In</a>
+        </p>
       </div>
     </form>
   </div>

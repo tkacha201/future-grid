@@ -1,76 +1,105 @@
 <div class="profile-container">
   <div class="profile-card">
     <div class="profile-header">
-      <img src="./profile.jpg" alt="Profile" class="profile-avatar" />
+      <img src="./profile.png" alt="Profile" class="profile-avatar" />
       <div class="profile-info">
         <h2>Profile Settings</h2>
         <p>Manage your FutureGrid account</p>
       </div>
     </div>
 
-    <!-- READ MODE -->
+    @if(!isEditMode) {
     <div class="profile-content">
       <div class="info-group">
         <span class="info-label">Username</span>
-        <span class="info-value">JohnDoe123</span>
+        <span class="info-value">{{ profileDetails.userName }}</span>
       </div>
       <div class="info-group">
         <span class="info-label">Email</span>
-        <!-- fix this later  -->
-        <span class="info-value">{{ "johndoe@example.com" }}</span>
+        <span class="info-value">{{ profileDetails.email }}</span>
       </div>
       <div class="info-group">
         <span class="info-label">Phone</span>
-        <span class="info-value">+1234567890</span>
+        <span class="info-value">{{ profileDetails.tel }}</span>
       </div>
       <div class="action-buttons">
-        <button class="edit-button">
+        <button class="edit-button" (click)="toggleEditMode()">
           <i class="fas fa-edit"></i> Edit Profile
         </button>
       </div>
     </div>
-
-    <!-- EDIT MODE -->
-    <form class="profile-content edit-mode">
+    } @else {
+    <form
+      #form="ngForm"
+      (ngSubmit)="handleSaveProfile(form)"
+      class="profile-content edit-mode"
+    >
       <div class="info-group">
         <span class="info-label">Username</span>
         <div class="info-value">
-          <input type="text" placeholder="Enter username" value="JohnDoe123" />
+          <input
+            type="text"
+            name="userName"
+            [ngModel]="profileDetails.userName"
+            #userName="ngModel"
+            required
+            minlength="5"
+            [class.input-error]="userName.touched && userName.errors"
+          />
         </div>
       </div>
+      @if(userName.touched) { @if(userName.errors?.['required']) {
+      <p class="error">Username is required</p>
+      } @if(userName.errors?.['minlength']) {
       <p class="error">Username must be at least 5 characters</p>
+      } }
 
       <div class="info-group">
         <span class="info-label">Email</span>
         <div class="info-value">
           <input
             type="email"
-            placeholder="Enter email"
-            value="johndoe@example.com"
+            name="email"
+            [ngModel]="profileDetails.email"
+            #email="ngModel"
+            required
+            [appEmail]="domains"
+            [class.input-error]="email.touched && email.errors"
           />
         </div>
       </div>
+      @if(email.touched) { @if(email.errors?.['required']) {
+      <p class="error">Email is required</p>
+      } @if(email.errors?.['emailValidator']) {
       <p class="error">Please enter a valid email</p>
+      } }
 
       <div class="info-group">
         <span class="info-label">Phone</span>
         <div class="info-value">
           <input
             type="tel"
-            placeholder="Enter phone number"
-            value="+1234567890"
+            name="tel"
+            [ngModel]="profileDetails.tel"
+            #tel="ngModel"
+            required
+            [class.input-error]="tel.touched && tel.errors?.['required']"
           />
         </div>
       </div>
+      @if(tel.touched && tel.errors?.['required']) {
+      <p class="error">Phone number is required</p>
+      }
 
       <div class="action-buttons">
-        <button type="button" class="cancel-button">
+        <button type="button" class="cancel-button" (click)="onCancel($event)">
           <i class="fas fa-times"></i> Cancel
         </button>
-        <button type="submit" class="save-button">
+        <button type="submit" class="save-button" [disabled]="form.invalid">
           <i class="fas fa-save"></i> Save Changes
         </button>
       </div>
     </form>
+    }
   </div>
 </div>
